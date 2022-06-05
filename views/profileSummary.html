@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Profile Summary</title>
+</head>
+<body>
+<!--Summary Box-->
+<div class="row m-5 p-5 border rounded">
+    <div class="col-6 p-2 mb-0">
+        <div class="p-2 border rounded-top">
+            <span>Name: {{ @SESSION.member->getFname() . " " . @SESSION.member->getLname() }}</span>
+        </div>
+        <div class="p-2 border">
+            <span>Gender: {{ @SESSION.member->getGender() }}</span>
+        </div>
+        <div class="p-2 border">
+            <span>Age: {{ @SESSION.member->getAge() }}</span>
+        </div>
+        <div class="p-2 border">
+            <span>Phone: {{ @SESSION.member->getPhone() }}</span>
+        </div>
+        <div class="p-2 border">
+            <span>Email: {{ @SESSION.member->getEmail() }}</span>
+        </div>
+        <div class="p-2 border">
+            <span>State: {{ @SESSION.member->getState() }}</span>
+        </div>
+        <check if="{{ get_class(@SESSION.member) == 'Member' }}">
+            <div class="p-2 border rounded-bottom">
+                <span>Seeking: {{ @SESSION.member->getSeeking() }}</span>
+            </div>
+        </check>
+        <check if="{{ get_class(@SESSION.member) == 'PremiumMember' }}">
+            <div class="p-2 border">
+                <span>Seeking: {{ @SESSION.member->getSeeking() }}</span>
+            </div>
+            <div class="p-2 border rounded-bottom">
+                <span class="d-block">Indoor Interests: {{ implode(", ", @SESSION.member->getInDoorInterests())
+                    }}</span>
+                <span class="d-block mt-2">Outdoor Interests: {{ implode(", ", @SESSION.member->getOutDoorInterests())
+                    }}</span>
+            </div>
+
+        </check>
+    </div>
+    <div class="col-6 p-2 mb-0 text-center">
+        <img id="profileImg" class="rounded" src="images/profile.png" alt="Profile Photo">
+        <div class="m-3">
+            <h3 class="text-start">Biography</h3>
+            <p>{{ @SESSION.member->getBio() }}</p>
+        </div>
+    </div>
+    <div class="text-center mt-0">
+        <button type="submit" class="btn btn-primary btn-lg mt-5">Contact Me!</button>
+    </div>
+</div>
+</body>
+</html>

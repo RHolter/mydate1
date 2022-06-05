@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Interests</title>
+</head>
+<body>
+
+<!--Form Section-->
+<form method="post" action="#" class="form-horizontal m-5 p-4 border rounded">
+  <div class="d-block">
+    <h1>Interests</h1>
+    <hr>
+  </div>
+
+  <!--Main Section-->
+  <div class="row">
+    <!--Indoor Interests Box-->
+    <label class="d-block">
+      <b>In-door Interests</b>
+    </label>
+    <div class="p-2">
+      <repeat group="{{ @indoorInterests }}" value="{{ @indoorInterest }}">
+        <label class="m-3">
+          <input type="checkbox" name="indoorInterests[]" value="{{ @indoorInterest }}">
+          {{ ucfirst(@indoorInterest) }}
+        </label>
+      </repeat>
+    </div>
+    <check if="{{ isset(@errors['indoorInterests']) }}">
+      <span class="text-danger mb-3">{{ @errors['indoorInterests'] }}</span>
+    </check>
+
+    <!--Outdoor Interests Box-->
+    <label class="d-block">
+      <b>Out-door Interests</b>
+    </label>
+    <div class="p-2">
+      <repeat group="{{ @outdoorInterests }}" value="{{ @outdoorInterest }}">
+        <label class="m-3">
+          <input type="checkbox" name="outdoorInterests[]" value="{{ @outdoorInterest }}">
+          {{ ucfirst(@outdoorInterest) }}
+        </label>
+      </repeat>
+    </div>
+    <check if="{{ isset(@errors['outdoorInterests']) }}">
+      <span class="text-danger">{{ @errors['outdoorInterests'] }}</span>
+    </check>
+
+    <div class="d-flex flex-column">
+      <button type="submit" class="btn btn-primary btn-nxt align-self-end">Next ></button>
+    </div>
+  </div>
+</form>
+</body>
+</html>

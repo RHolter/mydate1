@@ -5,7 +5,7 @@ ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
 // Require the necessary files
-require_once('vendor/autoload.php');
+//require_once('vendor/autoload.php');
 
 // Start the session
 session_start();
