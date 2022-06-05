@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Profile</title>
+</head>
+<body>
+<!--Form Section-->
+<form method="post" action="#" class="form-horizontal m-5 p-4 border rounded">
+  <div class="d-block">
+    <h1>Profile</h1>
+    <hr>
+  </div>
+
+  <!--Main Section-->
+  <div class="d-flex">
+    <!--Left Box-->
+    <div class="d-flex flex-column flex-grow-1 justify-content-start">
+      <div class="form-group">
+        <label>
+          <b>Email</b>
+        </label>
+        <!--Input with sticky-->
+        <input name="email" type="text" class="form-control" placeholder="my_email@email.com"
+               value="{{ @SESSION['email'] }}">
+
+        <!-- display error if there is one -->
+        <check if="{{ isset(@errors['email']) }}">
+          <span class="text-danger">{{ @errors['email'] }}</span>
+        </check>
+      </div>
+
+      <div class="form-group mt-2">
+        <label>
+          <b>State</b>
+        </label>
+
+        <select name="state" class="form-select" aria-label="Default select example">
+          <option value="Not Selected">Select a state</option>
+          <!--Input with sticky option-->
+          <repeat group="{{ @states }}" value="{{ @state }}">
+            <option
+            <check if="{{ @state == $_SESSION['state'] }}"> Selected </check>
+            value="{{ @state }}">{{ ucfirst(@state) }}</option>
+          </repeat>
+        </select>
+      </div>
+
+      <label class="d-block mt-2">
+        <b>Seeking</b>
+      </label>
+      <repeat group="{{ @genders }}" value="{{ @gender }}">
+        <div class="form-check form-check-inline mt-2">
+          <label class="form-check-label">
+            <!--Input with sticky radio box-->
+            <input name="seekingOptions" type="radio" class="form-check-input"
+                   value="{{ @gender }}"
+            <check if="{{ @gender == $_SESSION['seekingOptions'] }}">checked="checked"</check>
+            >
+            {{ ucfirst(@gender) }}</label>
+        </div>
+      </repeat>
+    </div>
+
+    <!--Right Box-->
+    <div class="d-flex flex-column column2">
+      <div class="rounded mb-5 p-2 align-self-start bioArea">
+        <label for="bio">
+          <b>Biography</b>
+        </label>
+        <textarea name="bio" class="form-control" id="bio" rows="5">{{ @SESSION['bio'] }}</textarea>
+      </div>
+      <button type="submit" class="btn btn-primary btn-nxt align-self-end mt-auto">Next ></button>
+    </div>
+  </div>
+</form>
+</body>
+</html>
