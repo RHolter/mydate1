@@ -11,7 +11,7 @@ error_reporting(E_ALL);
 session_start();
 
 // Test DataLayer class
-//$dataLayer = new DataLayer();
+$dataLayer = new DataLayer();
 
 // Create instance of the base class
 $f3 = Base::instance();
