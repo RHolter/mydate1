@@ -57,3 +57,4 @@ $f3->route('GET|POST /profileSummary', function()
 
 // Run fat free
 $f3->run();
+
