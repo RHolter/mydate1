@@ -11,13 +11,13 @@ error_reporting(E_ALL);
 session_start();
 
 // Test DataLayer class
-$dataLayer = new DataLayer();
+//$dataLayer = new dataLayer();
 
 // Create instance of the base class
 $f3 = Base::instance();
 
 // Creating an instance of the controller class
-//$con = new Controller($f3);
+$con = new Controller($f3);
 
 // Define a default route
 // Home page rendering

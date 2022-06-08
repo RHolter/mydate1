@@ -2,14 +2,14 @@
 
 class DataLayer
 {
-    private $_dbh;
+    private $dbh;
 
     function __construct()
     {
         // TODO: Move try-catch from config to data-layer
         require_once($_SERVER['DOCUMENT_ROOT'].'/../config.php');
         $dbh = 5;
-        $this->_dbh = $dbh;
+        $this->dbh = $dbh;
     }
 
     static function getGenders() {
